@@ -18,6 +18,7 @@ class InitialSettingActivity : AppCompatActivity() {
     lateinit var name:String
     lateinit var num:String
     var age:Int = 0
+    // 0은 남자, 1은 여자로 설정함
     private var gender : Int = 0
     lateinit var sharedPref: SharedPreferences
 
@@ -31,10 +32,10 @@ class InitialSettingActivity : AppCompatActivity() {
             name = binding.etName.text.toString()
             num = binding.etAge.text.toString()
             age = num.toInt()
-            Log.d("초기 설정 액티비티", "이름: ${name}, 나이 ${age}, 성별: ${gender}")
             sharedPref.edit().run{
                 putString("name",name)
                 putInt("age",age)
+                putInt("gender",gender)
                 commit()
             }
             startActivity(Intent(this,MainActivity::class.java))
@@ -52,6 +53,13 @@ class InitialSettingActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             intent.type = "image/*"
             requestLauncher.launch(intent)
+        }
+
+        binding.rgGender.setOnCheckedChangeListener{_,checkedId ->
+            when(checkedId){
+                R.id.btn_man -> { gender = 0}
+                R.id.btn_woman -> { gender = 1}
+            }
         }
 
     }
