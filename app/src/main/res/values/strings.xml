@@ -2,4 +2,5 @@
     <string name="app_name">MBTI</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="client_id">320055302957-tjuqdnudm25629c0r5t8u9ri9apkjd1f.apps.googleusercontent.com</string>
 </resources>

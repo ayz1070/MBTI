@@ -12,32 +12,43 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.example.mbti.databinding.ActivityInitialSettingBinding
+import com.example.mbti.model.User
 
 class InitialSettingActivity : AppCompatActivity() {
     lateinit var binding: ActivityInitialSettingBinding
-    lateinit var name:String
+    lateinit var nickname:String
     lateinit var num:String
     var age:Int = 0
+    lateinit var mbti:String
     // 0은 남자, 1은 여자로 설정함
     private var gender : Int = 0
-    lateinit var sharedPref: SharedPreferences
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInitialSettingBinding.inflate(layoutInflater)
-        sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+
         setContentView(binding.root)
 
         binding.btnNext.setOnClickListener {
-            name = binding.etName.text.toString()
+            nickname = binding.etName.text.toString()
             num = binding.etAge.text.toString()
             age = num.toInt()
-            sharedPref.edit().run{
-                putString("name",name)
-                putInt("age",age)
-                putInt("gender",gender)
-                commit()
-            }
+            mbti = binding.etMbti.text.toString()
+
+            MyApplication.nickname = nickname
+            MyApplication.mbti = mbti
+            MyApplication.gender = gender
+            MyApplication.age = age
+            MyApplication.user = User(nickname,MyApplication.email,age,gender,mbti)
+            MyApplication.db.collection("users")
+                .add(MyApplication.user!!)
+                .addOnSuccessListener { documentReference ->
+                    Log.d("데이터베이스", "DocumentSnapshot added with ID: ${documentReference.id}")
+                }
+                .addOnFailureListener { e ->
+                    Log.w("데이터베이스", "Error adding document", e)
+                }
             startActivity(Intent(this,MainActivity::class.java))
         }
 

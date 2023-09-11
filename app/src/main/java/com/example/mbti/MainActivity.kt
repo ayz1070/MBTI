@@ -13,17 +13,26 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         setContentView(binding.root)
 
-        val name = sharedPref.getString("name","")
-        val age = sharedPref.getInt("age",0)
-
-        binding.nameTv.text = name
-        binding.tvAge.text = age.toString()
+        binding.nameTv.text = MyApplication.nickname
+        binding.tvAge.text = MyApplication.age.toString()
 
         binding.nameTv.setOnClickListener{
 
         }
+        binding
+        binding.navBottom.setOnItemSelectedListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            when(it.itemId){
+                R.id.nav_community -> transaction.replace(R.id.fl_main, CommunityFragment())
+                //R.id.nav_setting -> transaction.replace(R.id.fl_main,)
+
+            }
+            transaction.commit()
+            true
+        }
+
+
     }
 }

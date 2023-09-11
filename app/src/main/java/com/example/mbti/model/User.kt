@@ -1,8 +1,10 @@
 package com.example.mbti.model
 
 data class User(
-    val name:String,
-    val age:Int,
-    val gender:Int,
-    val photoUrl:String
+    var nickname:String? = null,
+    var email:String? = null,
+    var age:Int? = null,
+    var gender:Int? = null,
+    var mbti:String? = null
+    //val photoUrl:String?
 )
