@@ -15,19 +15,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.nameTv.text = MyApplication.nickname
-        binding.tvAge.text = MyApplication.age.toString()
 
-        binding.nameTv.setOnClickListener{
-
-        }
-        binding
         binding.navBottom.setOnItemSelectedListener {
             val transaction = supportFragmentManager.beginTransaction()
             when(it.itemId){
                 R.id.nav_community -> transaction.replace(R.id.fl_main, CommunityFragment())
                 //R.id.nav_setting -> transaction.replace(R.id.fl_main,)
-
             }
             transaction.commit()
             true
