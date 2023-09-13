@@ -24,7 +24,7 @@ class CommunityFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         posts = mutableListOf<Post>()
-
+        makeRecyclerView()
 
     }
 
@@ -39,32 +39,29 @@ class CommunityFragment : Fragment() {
             startActivity(intent)
         }
 
-        binding.btnTest.setOnClickListener{
-            MyApplication.db.collection("posts")
-                .get()
-                .addOnSuccessListener { result->
-                    for(document in result){
-                        val post = document.toObject(Post::class.java)
-                        posts.add(post)
-                        Log.d("글 목록","$post.title")
-                    }
-                    binding.rvBoard.layoutManager = LinearLayoutManager(requireContext())
-                    binding.rvBoard.adapter = CommunityAdapter(requireContext(),posts)
-                    Log.d("서버 전송","서버 전송 성공")
-                }
-                .addOnFailureListener{e ->
-                    Log.d("서버 전송","서버 전송 실패",e)
-                    Toast.makeText(context,"서버로부터 데이터 획득 실패",Toast.LENGTH_SHORT).show()
-                }
-        }
-
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-
     }
-
+    fun makeRecyclerView(){
+        MyApplication.db.collection("posts")
+            .get()
+            .addOnSuccessListener { result->
+                for(document in result){
+                    val post = document.toObject(Post::class.java)
+                    posts.add(post)
+                    Log.d("글 목록","$post.title")
+                }
+                binding.rvBoard.layoutManager = LinearLayoutManager(requireContext())
+                binding.rvBoard.adapter = CommunityAdapter(requireContext(),posts)
+                Log.d("서버 전송","서버 전송 성공")
+            }
+            .addOnFailureListener{e ->
+                Log.d("서버 전송","서버 전송 실패",e)
+                Toast.makeText(context,"서버로부터 데이터 획득 실패",Toast.LENGTH_SHORT).show()
+            }
+    }
 
 }

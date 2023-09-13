@@ -25,7 +25,6 @@ class CommunityDetailActivity : AppCompatActivity() {
             tvMbti.text = data?.mbti
             tvNickname.text=data?.nickname
             tvTitle.text=data?.title
-
         }
     }
 }

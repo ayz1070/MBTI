@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="설정">
+        <Preference
+            android:key="nickname"
+            android:title="닉네임 변경"/>
+
+        <Preference
+            android:key="logout"
+            android:title="로그아웃"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>
