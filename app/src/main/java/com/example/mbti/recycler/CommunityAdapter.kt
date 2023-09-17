@@ -44,7 +44,7 @@ class CommunityAdapter(val context: Context, val itemList:MutableList<Post>):
 
         holder.binding.run {
             tvTitle.text = post.title
-            tvTime.text = post.date
+            tvTime.text = post.timestamp
             tvMbti.text = post.mbti
         }
     }

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mbti.databinding.FragmentCommunityBinding
 import com.example.mbti.model.Post
@@ -47,15 +48,17 @@ class CommunityFragment : Fragment() {
     }
     fun makeRecyclerView(){
         MyApplication.db.collection("posts")
+            .orderBy("timestamp")
             .get()
             .addOnSuccessListener { result->
                 for(document in result){
                     val post = document.toObject(Post::class.java)
                     posts.add(post)
-                    Log.d("글 목록","$post.title")
+                    Log.d("글 목록","${post.title}")
                 }
                 binding.rvBoard.layoutManager = LinearLayoutManager(requireContext())
                 binding.rvBoard.adapter = CommunityAdapter(requireContext(),posts)
+                binding.rvBoard.addItemDecoration(DividerItemDecoration(requireContext(),1))
                 Log.d("서버 전송","서버 전송 성공")
             }
             .addOnFailureListener{e ->

@@ -17,6 +17,9 @@
         android:theme="@style/Theme.MBTI"
         tools:targetApi="31">
         <activity
+            android:name=".BaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".CommunityDetailActivity"
             android:exported="false" />
         <activity
@@ -27,7 +30,8 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".InitialSettingActivity"
             android:exported="true" />
@@ -39,6 +43,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

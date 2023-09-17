@@ -9,9 +9,10 @@ import java.util.Date
 @Keep
 data class Post(
     var content:String? =null,
-    var date: String?=null,
+    var timestamp: String?=null,
     var email:String?=null,
     var mbti:String?=null,
     var nickname: String?=null,
-    var title:String?=null
+    var title:String?=null,
+    var docId:String?=null
 ): Serializable
