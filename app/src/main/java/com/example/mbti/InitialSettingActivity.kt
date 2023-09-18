@@ -23,7 +23,6 @@ class InitialSettingActivity : AppCompatActivity() {
     // 0은 남자, 1은 여자로 설정함
     private var gender : Int = 0
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInitialSettingBinding.inflate(layoutInflater)
@@ -52,19 +51,19 @@ class InitialSettingActivity : AppCompatActivity() {
             startActivity(Intent(this,MainActivity::class.java))
         }
 
-        binding.ivProfile.setOnClickListener {
-            val requestLauncher = registerForActivityResult(
-                ActivityResultContracts.StartActivityForResult()
-            )
-            {
-                Glide.with(this)
-                    .load(it.data!!.data)
-                    .into(binding.ivProfile)
-            }
-            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            intent.type = "image/*"
-            requestLauncher.launch(intent)
-        }
+//        binding.ivProfile.setOnClickListener {
+//            val requestLauncher = registerForActivityResult(
+//                ActivityResultContracts.StartActivityForResult()
+//            )
+//            {
+//                Glide.with(this)
+//                    .load(it.data!!.data)
+//                    .into(binding.ivProfile)
+//            }
+//            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+//            intent.type = "image/*"
+//            requestLauncher.launch(intent)
+//        }
 
         binding.rgGender.setOnCheckedChangeListener{_,checkedId ->
             when(checkedId){

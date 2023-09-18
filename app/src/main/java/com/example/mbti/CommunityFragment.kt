@@ -21,7 +21,6 @@ class CommunityFragment : Fragment() {
     lateinit var intent: Intent
     lateinit var posts: MutableList<Post>
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         posts = mutableListOf<Post>()

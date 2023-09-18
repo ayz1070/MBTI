@@ -23,13 +23,13 @@ class MyApplication : MultiDexApplication(){
             var currentUser = auth.currentUser
             return currentUser?.let {
                 email = currentUser.email
+
                 currentUser.isEmailVerified
             } ?: let {
                 false
             }
         }
     }
-
     override fun onCreate() {
         super.onCreate()
         auth = Firebase.auth

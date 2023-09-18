@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="설정">
+    <PreferenceCategory android:title="설정" android:key="setting">
         <Preference
+
             android:key="nickname"
             android:title="닉네임 변경"/>
 

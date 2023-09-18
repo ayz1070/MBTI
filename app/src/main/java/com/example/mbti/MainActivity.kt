@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home -> transaction.replace(R.id.fl_main, HomeFragment())
                 R.id.nav_community -> transaction.replace(R.id.fl_main, CommunityFragment())
                 R.id.nav_setting -> transaction.replace(R.id.fl_main,SettingFragment())
+                R.id.nav_test -> transaction.replace(R.id.fl_main,TestFragment())
             }
             transaction.commit()
             true

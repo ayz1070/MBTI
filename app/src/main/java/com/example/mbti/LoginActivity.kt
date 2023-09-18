@@ -29,10 +29,10 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.btnEmail.setOnClickListener{
-            val intent = Intent(this,EmailActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.btnEmail.setOnClickListener{
+//            val intent = Intent(this,EmailActivity::class.java)
+//            startActivity(intent)
+//        }
 
         binding.btnLogin.setOnClickListener{
             email = binding.etEmail.text.toString()
